@@ -7,7 +7,10 @@ def greet(input:str):
 #Task 3
 def calculator(number1, number2, calc_type):
     try:
-        if calc_type == "add":
+        if calc_type == "":
+            result = round(float(number1) * float(number2), 1)
+            return (result)
+        elif calc_type == "add":
             result = round(float(number1) + float(number2), 1)
             return (result)
         elif calc_type == "subtract":
@@ -176,9 +179,6 @@ if __name__ == "__main__":
     task3_user_input_1 = input("Please provide the first number: ")
     task3_user_input_2 = input("Please provide the second number: ")
     task3_user_input_3 = input("What mathematical operation would you like to complete? (add, subtract, multiply, divide, modulo, int_divide (for integer division), and power): ")
-    while task3_user_input_3.strip().lower() not in ["add", "subtract", "multiply", "divide", "modulo", "int_divide", "power"]:
-        print("The mathematical operation requested is not valid. Please redo.")
-        task3_user_input_3 = input("What mathematical operation would you like to complete? (add, subtract, multiply, divide, modulo, int_divide (for integer division), and power): ")
     print(calculator(task3_user_input_1,task3_user_input_2, task3_user_input_3))
     #Calling Task 4 function
     print("\nNext up is the converter function which will take a value and convert it to a different type e.g. '42' to 42.0.")
