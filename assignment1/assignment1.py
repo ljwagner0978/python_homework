@@ -5,7 +5,7 @@ def hello():
 def greet(input:str):
     return(f"Hello, {input.strip().capitalize()}!")
 #Task 3
-def calculator(number1, number2, calc_type):
+def calc(number1, number2, calc_type):
     try:
         if calc_type == "":
             result = round(float(number1) * float(number2), 1)
@@ -24,7 +24,7 @@ def calculator(number1, number2, calc_type):
             return (result)
         elif calc_type == "int_divide":
             result = float(number1) // float(number2)
-            return (result)
+            return (int(result))
         elif calc_type == "power":
             result = pow(int(number1), int(number2))
             return result
@@ -179,7 +179,7 @@ if __name__ == "__main__":
     task3_user_input_1 = input("Please provide the first number: ")
     task3_user_input_2 = input("Please provide the second number: ")
     task3_user_input_3 = input("What mathematical operation would you like to complete? (add, subtract, multiply, divide, modulo, int_divide (for integer division), and power): ")
-    print(calculator(task3_user_input_1,task3_user_input_2, task3_user_input_3))
+    print(calc(task3_user_input_1,task3_user_input_2, task3_user_input_3))
     #Calling Task 4 function
     print("\nNext up is the converter function which will take a value and convert it to a different type e.g. '42' to 42.0.")
     task4_user_input_1 = input("Please provide the value you would like to convert: ")
