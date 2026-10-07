@@ -1,8 +1,8 @@
 #Task 1
-def hello_function():
+def hello():
     return("Hello!")
 #Task 2
-def greet_function(input:str):
+def greet(input:str):
     return(f"Hello, {input.strip().capitalize()}!")
 #Task 3
 def calculator(number1, number2, calc_type):
@@ -20,7 +20,7 @@ def calculator(number1, number2, calc_type):
             result = round(float(number1) / float(number2), 1)
             return (result)
         elif calc_type == "int_divide":
-            result = int(number1) / int(number2)
+            result = float(number1) // float(number2)
             return (result)
         elif calc_type == "power":
             result = pow(int(number1), int(number2))
@@ -33,29 +33,29 @@ def calculator(number1, number2, calc_type):
     except ValueError:
         return("Value error occurred. Ensure no text is in the numbers provided.")
     except ZeroDivisionError:
-        return("Can't divide by zero — please try a non-zero denominator.")
+        return("You can't divide by 0!")
     except Exception as e:
         return(f"{type(e).__name__} — {e}")
 #Task 4
-def data_type_conversion(value, type):
+def data_type_conversion(value, target_type):
     try:
-        if type == "float":
+        if target_type == "float":
             result = float(value)
             return(result)
-        elif type == "int":
+        elif target_type == "int":
             result = int(value)
             return(result)
-        elif type == "string":
+        elif target_type == "str":
             result = str(value)
             return(result)
         else:
             return("Data type was not recognized. Please try again.")
     except ValueError:
-        return(f"You can't convert {value} into a {type}.")
+        return(f"You can't convert {value} into a {target_type}.")
     except Exception as e:
             return(f"{type(e).__name__} — {e}")
 #Task 5
-def grade_function(*args):
+def grade(*args):
     try:
         scores = [float(arg) for arg in args]
         
@@ -105,7 +105,7 @@ def student_scores(positional:str, **kwargs):
     except Exception as e:
             return(f"{type(e).__name__} — {e}")
 #Task 8
-def titelize(string:str):
+def titleize(string:str):
     try:
         words = string.split()
         new_word_list = []
@@ -132,44 +132,45 @@ def hangman(secret, guess):
             else:
                 return_list.append('_')
         return_str = ''.join(return_list)
-        if return_str == (secret):
-            print("Congratulations, you guessed the word!")
         return return_str
     except Exception as e:
             return(f"{type(e).__name__} — {e}")
 #Task 10
-def pig_latin(usr_string:str):
+def pig_latin(usr_input:str):
     try:
-        if not any(vowel in usr_string for vowel in "aeiou"):
-            return (usr_string + "ay")
-        new_str = list(usr_string)
-        if new_str[0] in ["a","e","i","o","u"]:
-            return((usr_string + "ay"))
-        else:
-            return_str = ""
-            i = 0
-            while i < len(new_str):
-                if new_str[i] == "q" and i != (len(new_str) - 1) and new_str[i+1] == "u":
-                    new_str = new_str[1:] + new_str[:1]
-                    new_str = new_str[1:] + new_str[:1]
-                    i = 0
-                if new_str[i] in ["a", "e", "i", "o", "u"]:
-                    break
-                else:
-                    new_str = new_str[1:] + new_str[:1]
-                    i = 0
-        return_str = ''.join(new_str)
-        return((return_str + "ay"))
+        usr_string = usr_input.split()
+        print(usr_string)
+        ultimate_return_list = []
+        for string in usr_string:
+            new_str = list(string)
+            if not any(vowel in string for vowel in "aeiou") or new_str[0] in ["a","e","i","o","u"]:
+                untouched_str = ''.join(new_str)
+                ultimate_return_list.append(untouched_str + "ay")
+            else:
+                i = 0
+                while i < len(new_str):
+                    if new_str[i] == "q" and i != (len(new_str) - 1) and new_str[i+1] == "u":
+                        new_str = new_str[1:] + new_str[:1]
+                        new_str = new_str[1:] + new_str[:1]
+                        i = 0
+                    if new_str[i] in ["a", "e", "i", "o", "u"]:
+                        break
+                    else:
+                        new_str = new_str[1:] + new_str[:1]
+                        i = 0
+                pig_str = ''.join(new_str)
+                ultimate_return_list.append(pig_str + "ay")
+        return_str = ' '.join(ultimate_return_list)
+        return(return_str)
     except Exception as e:
         return(f"{type(e).__name__} — {e}")
         
-
 if __name__ == "__main__":
     # Calling Task 1 function
-    print(hello_function())
+    print(hello())
     #Calling Task 2 function
     task2_user_input = input("What is your name?: ")
-    print(greet_function(task2_user_input))
+    print(greet(task2_user_input))
     #Calling Task 3 function
     print("\nNext up is the calculator function in which you will provide 2 numbers and the operation you'd like to compute.")
     task3_user_input_1 = input("Please provide the first number: ")
@@ -182,17 +183,17 @@ if __name__ == "__main__":
     #Calling Task 4 function
     print("\nNext up is the converter function which will take a value and convert it to a different type e.g. '42' to 42.0.")
     task4_user_input_1 = input("Please provide the value you would like to convert: ")
-    task4_user_input_2 = input("Please provide the type you would like to convert the value to (float, int, string): ")
-    while task4_user_input_2.strip().lower() not in ["float", "int", "string"]:
-        print("The conversion cannot occur because the type inputted was not valid. Try 'float', 'int', or 'string'.")
-        task4_user_input_2 = input("Please provide the type you would like to convert the value to (float, int, string): ")
+    task4_user_input_2 = input("Please provide the type you would like to convert the value to (float, int, str): ")
+    while task4_user_input_2.strip().lower() not in ["float", "int", "str"]:
+        print("The conversion cannot occur because the type inputted was not valid. Try 'float', 'int', or 'str'.")
+        task4_user_input_2 = input("Please provide the type you would like to convert the value to (float, int, str): ")
     print(data_type_conversion(task4_user_input_1, task4_user_input_2))
     #Calling Task 5 function
     print("\nNext up is the grade calculator, which will provide the overall letter grade given a series of grades.")
     task5_user_input_1 = input("Enter score 1: ")
     task5_user_input_2 = input("Enter score 2: ")
     task5_user_input_3 = input("Enter score 3: ")
-    print(grade_function(task5_user_input_1, task5_user_input_2, task5_user_input_3))
+    print(grade(task5_user_input_1, task5_user_input_2, task5_user_input_3))
     #Calling Task 6 function
     print("\nNext up is the string repeater which will give you a string repeated based on how many times you'd like it repeated e.g. rasrasras")
     task6_user_input_1 = input("What word would you like repeated?: ")
@@ -215,7 +216,7 @@ if __name__ == "__main__":
     #Calling Task 8 function
     print("\nNext up is the Titlize function. You'll need to provide a word or phrase and the function will provide a book title.")
     task8_user_input_1 = input("What word or phrase would you like to be formatted into a book title?: ")
-    print(titelize(task8_user_input_1))
+    print(titleize(task8_user_input_1))
     #Calling Task 9 function
     print("\nNext up is the Hangman function. You'll need to provide a word to guess is the secret word!")
     task9_user_input_1 = input("What word would you like to guess is the secret word?: ")
