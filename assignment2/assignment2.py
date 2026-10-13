@@ -175,15 +175,16 @@ def read_minutes():
                 print(f"Exception message: {message}")
             print(f"Stack trace: {stack_trace}")
 
-minutes1 = read_minutes()
+minutes1, minutes2 = read_minutes()
 print(minutes1)
+print(minutes2)
 
 #Task 13
 def create_minutes_set():
     try:
         if minutes1 != {}:
-            minutes_1_dict = minutes1[0]
-            minutes_2_dict = minutes1[1]
+            minutes_1_dict = minutes1
+            minutes_2_dict = minutes2
             minutes_1_set = set(minutes_1_dict["rows"])
             minutes_2_set = set(minutes_2_dict["rows"])
             new_minutes_set = minutes_1_set.union(minutes_2_set)
@@ -229,10 +230,9 @@ def write_sorted_list():
         if minutes_list != []:
             new_list = sorted(minutes_list, key=lambda x: x[1])
             new_list = list(map(lambda x: (x[0], datetime.strftime(x[1], "%B %d, %Y")), new_list))
-        if os.path.exists('./minutes.csv'):
             with open('./minutes.csv', 'w', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow(minutes1[0]["fields"])
+                writer.writerow(minutes1["fields"])
                 for x, y in new_list:
                     writer.writerow([x, y])
         return(new_list)

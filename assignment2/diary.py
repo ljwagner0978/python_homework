@@ -2,7 +2,7 @@ import traceback
 
 if __name__ == "__main__":
     try: 
-        with open('diary.txt', 'w') as file:
+        with open('diary.txt', 'a') as file:
             line = input("What happened today? ")
             while line != "done for now":
                 file.write(f"{line}\n")
