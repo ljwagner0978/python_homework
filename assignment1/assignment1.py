@@ -5,12 +5,9 @@ def hello():
 def greet(input:str):
     return(f"Hello, {input.strip().capitalize()}!")
 #Task 3
-def calc(number1, number2, calc_type):
+def calc(number1, number2, calc_type="multiply"):
     try:
-        if calc_type == "":
-            result = round(float(number1) * float(number2), 1)
-            return (result)
-        elif calc_type == "add":
+        if calc_type == "add":
             result = round(float(number1) + float(number2), 1)
             return (result)
         elif calc_type == "subtract":
@@ -34,7 +31,7 @@ def calc(number1, number2, calc_type):
         else:
             return ("Calculation type requested was not valid. Please try again.") 
     except ValueError:
-        return("Value error occurred. Ensure no text is in the numbers provided.")
+        return("You can't multiply those values!")
     except ZeroDivisionError:
         return("You can't divide by 0!")
     except Exception as e:
@@ -167,67 +164,3 @@ def pig_latin(usr_input:str):
         return(return_str)
     except Exception as e:
         return(f"{type(e).__name__} — {e}")
-        
-if __name__ == "__main__":
-    # Calling Task 1 function
-    print(hello())
-    #Calling Task 2 function
-    task2_user_input = input("What is your name?: ")
-    print(greet(task2_user_input))
-    #Calling Task 3 function
-    print("\nNext up is the calculator function in which you will provide 2 numbers and the operation you'd like to compute.")
-    task3_user_input_1 = input("Please provide the first number: ")
-    task3_user_input_2 = input("Please provide the second number: ")
-    task3_user_input_3 = input("What mathematical operation would you like to complete? (add, subtract, multiply, divide, modulo, int_divide (for integer division), and power): ")
-    print(calc(task3_user_input_1,task3_user_input_2, task3_user_input_3))
-    #Calling Task 4 function
-    print("\nNext up is the converter function which will take a value and convert it to a different type e.g. '42' to 42.0.")
-    task4_user_input_1 = input("Please provide the value you would like to convert: ")
-    task4_user_input_2 = input("Please provide the type you would like to convert the value to (float, int, str): ")
-    while task4_user_input_2.strip().lower() not in ["float", "int", "str"]:
-        print("The conversion cannot occur because the type inputted was not valid. Try 'float', 'int', or 'str'.")
-        task4_user_input_2 = input("Please provide the type you would like to convert the value to (float, int, str): ")
-    print(data_type_conversion(task4_user_input_1, task4_user_input_2))
-    #Calling Task 5 function
-    print("\nNext up is the grade calculator, which will provide the overall letter grade given a series of grades.")
-    task5_user_input_1 = input("Enter score 1: ")
-    task5_user_input_2 = input("Enter score 2: ")
-    task5_user_input_3 = input("Enter score 3: ")
-    print(grade(task5_user_input_1, task5_user_input_2, task5_user_input_3))
-    #Calling Task 6 function
-    print("\nNext up is the string repeater which will give you a string repeated based on how many times you'd like it repeated e.g. rasrasras")
-    task6_user_input_1 = input("What word would you like repeated?: ")
-    task6_user_input_2 = input("How many times would you like it repeated?: ")
-    while task6_user_input_2.isdigit() == False:
-        print("Not a valid entry for the amount of times to be completed, please try again.")
-        task6_user_input_2 = input("How many times would you like it repeated?: ")
-    print(repeat(task6_user_input_1, task6_user_input_2))
-    #Calling Task 7 function
-    print("\nNext up is the student scorer function. You'll need to provide what metric you'd like to see and the student data you'd like to see.")
-    task7_user_input_2 = input("Please provide a student name with their score e.g.'Jessica=87': ")
-    task7_user_input_3 = input("Please provide a student name with their score e.g.'Jessica=87': ")
-    task7_user_input_4 = input("Please provide a student name with their score e.g.'Jessica=87': ")
-    task7_user_input_5 = input("Please provide a student name with their score e.g.'Jessica=87': ")
-    task7_user_input_1 = input("Would you rather see the best score taker or the average score? ('best' or 'mean'): ")
-    while task7_user_input_1.strip().lower() not in ["best", "mean"]:
-        print("Not a valid entry for the metric, please try again.")
-        task7_user_input_1 = input("Would you rather see the best score taker or the average score? ('best' or 'mean'): ")
-    print(student_scores(task7_user_input_1, task7_user_input_2, task7_user_input_3, task7_user_input_4, task7_user_input_5))
-    #Calling Task 8 function
-    print("\nNext up is the Titlize function. You'll need to provide a word or phrase and the function will provide a book title.")
-    task8_user_input_1 = input("What word or phrase would you like to be formatted into a book title?: ")
-    print(titleize(task8_user_input_1))
-    #Calling Task 9 function
-    print("\nNext up is the Hangman function. You'll need to provide a word to guess is the secret word!")
-    task9_user_input_1 = input("What word would you like to guess is the secret word?: ")
-    while task9_user_input_1.isdigit():
-            print("Not a valid word, please try again!")
-            task9_user_input_1 = input("What word would you like to guess is the secret word?: ")
-    print(hangman("magical", task9_user_input_1.strip().lower()))
-    #Calling Task 10 function
-    print("\nNext up is the Pig Latin function. When you provide a word, you'll receive the word as it is in Pig Latin!")
-    task10_user_input_1 = input("Please provide the word you would like converted into pig latin: ")
-    while task10_user_input_1.isdigit():
-        print("Not a valid word, please try again!")
-        task10_user_input_1 = input("Please provide the word you would like converted into pig latin: ")
-    print(pig_latin(task10_user_input_1.strip().lower()))
