@@ -52,7 +52,6 @@ clean_data = dirty_data.copy()
 clean_data.drop_duplicates(inplace=True, ignore_index = True)
 print(clean_data)
 
-clean_data['Age'] = clean_data['Age'].replace(['NaN'], pd.NA)
 clean_data['Age'] = pd.to_numeric(clean_data['Age'], errors='coerce')
 clean_data['Age'] = clean_data['Age'].fillna(np.mean(clean_data['Age']))
 
