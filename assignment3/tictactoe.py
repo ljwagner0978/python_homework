@@ -87,6 +87,6 @@ if __name__ == "__main__":
             game1.move(user_move)
             print(game1.__str__())
         except TictactoeException as e:
-            print({e})
+            print(e)
             user_move = input(f"{game1.turn}'s turn, where do you move?: " )
     print(game1.whats_next()[1])
