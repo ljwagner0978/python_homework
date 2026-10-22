@@ -80,8 +80,11 @@ if __name__ == "__main__":
     game1 = Board()
     print("Welcome to Tic Tac Toe")
     print('Please note, valid moves include: "upper left", "upper center", "upper right", "middle left", "center", "middle right", "lower left", "lower center", "lower right"')
-    while game1.whats_next()[0] is not True:
-        user_move = input(f"{game1.turn}'s turn, where do you move?: " )
-        game1.move(user_move)
-        print(game1.__str__())
+    try:
+        while game1.whats_next()[0] is not True:
+            user_move = input(f"{game1.turn}'s turn, where do you move?: " )
+            game1.move(user_move)
+            print(game1.__str__())
+    except TictactoeException():
+        print("That's not a valid move.")
     print(game1.whats_next()[1])

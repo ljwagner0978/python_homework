@@ -26,6 +26,6 @@ def make_hangman(secret_word):
 if __name__ == "__main__":
     secret_word = input("What word should the secret word be?: ")
     game1 = make_hangman(secret_word)
-    guess = input("What word do you guess the secret word to be?: ")
+    guess = input("What letter would you like to guess?: ")
     while game1(guess) is not True:
-        guess = input("What word do you guess the secret word to be?: ")
+        guess = input("What letter would you like to guess: ")

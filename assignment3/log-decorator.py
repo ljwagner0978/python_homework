@@ -14,7 +14,7 @@ def logger_decorator(func):
             logger.log(logging.INFO, f"keyword parameters: {tuple(kwargs.items())}")
         else:
             logger.log(logging.INFO, f"keyword parameters: none")  
-        logger.log(logging.INFO, f"return: {func()}")  
+        logger.log(logging.INFO, f"return: {func(*args, **kwargs)}")  
         func()
     return wrapper
 
