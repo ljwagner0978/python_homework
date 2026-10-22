@@ -1,0 +1,12 @@
+function: hello_world
+positional parameters: none
+keyword parameters: none
+return: None
+function: positional_func
+positional parameters: [75, 85, 95]
+keyword parameters: none
+return: True
+function: keywords_func
+positional parameters: none
+keyword parameters: (('Tom', 75), ('Dick', 89), ('Angela', 91))
+return: <function logger_decorator at 0x0000018EED7135E0>
