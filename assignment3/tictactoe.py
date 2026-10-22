@@ -1,7 +1,7 @@
 
 class TictactoeException(Exception):
     def __init__(self, message):
-         super().__init__(message)
+        self.message = super().__init__(message)
 
 class Board:
     
@@ -85,6 +85,6 @@ if __name__ == "__main__":
             user_move = input(f"{game1.turn}'s turn, where do you move?: " )
             game1.move(user_move)
             print(game1.__str__())
-    except TictactoeException():
-        print("That's not a valid move.")
+    except TictactoeException as e:
+        print({e})
     print(game1.whats_next()[1])

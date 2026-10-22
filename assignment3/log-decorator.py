@@ -20,7 +20,7 @@ def logger_decorator(func):
 
 @logger_decorator
 def hello_world():
-    return("Hello, World!")
+    print("Hello, World!")
     
 @logger_decorator
 def positional_func(*args):
@@ -28,7 +28,7 @@ def positional_func(*args):
 
 @logger_decorator
 def keywords_func(**kwargs):
-    return logger_decorator(keywords_func)
+    return logger_decorator
 
     
 hello_world()        
