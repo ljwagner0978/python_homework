@@ -3,8 +3,7 @@ import csv
 import traceback
 
 def read_employees():
-    new_dict = {}
-    row_list = []
+
     try:
         if os.path.exists('../csv/employees.csv'):
             with open('../csv/employees.csv', 'r') as file:
